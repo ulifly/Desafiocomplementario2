@@ -1,0 +1,10 @@
+body {
+    background-image: url("https://c.tenor.com/Rf2-km-ODToAAAAC/pac-man-video-game.gif");
+    background-repeat: repeat-y;
+    background-position: right;
+    background-size: 1000px;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+}
