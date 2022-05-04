@@ -12,6 +12,14 @@
 // los botones en algun momento deben funcionar para agregar eliminar y buscar juegos 
 // y que la salida sea en un html muy visual con las caratulas de los juegos como el html principal
 
+/*-----------ultimos cambios--------*/
+// para cumplir con las rubicas de evaluacion y aumentar funcionalidad ahora el array se traduce al DOM
+// con una funcion que crea los elementos en HTML y se mejoraron los estilos de las card, 
+
+
+/*----------- proximos cambios ---------*/
+//  espero en el siguiente cambio utilizar los eventos para actualizar la pagina con los cambios que 
+//  realizan los botones sobre el array e ingluir el boton de eliminar en cada card
 
 
 /**------declaro el array juegos-------- **/
@@ -68,7 +76,7 @@ function buscar_juego(nombre_a_buscar) {
         alert("no se encuenta en el catalogo");
     }
 }
-
+/*------funcion que genera el emnu con las cards------------ */
 function menu_juegos(){
     juegos.forEach(juego => {
         const divjuego = document.createElement("div");
@@ -80,8 +88,13 @@ function menu_juegos(){
 
         const nombrejuego = document.createElement("h2");
         nombrejuego.textContent = juego.nombre;
+
+        const plataformajuego = document.createElement("h6");
+        plataformajuego.textContent = juego.plataforma
+
         divjuego.appendChild(imgjuego);
         divjuego.appendChild(nombrejuego);
+        divjuego.appendChild(plataformajuego)
     
         containerjuegos.appendChild(divjuego);
     })
