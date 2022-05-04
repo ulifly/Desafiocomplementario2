@@ -1,15 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-image: url("https://as1.ftcdn.net/v2/jpg/03/23/88/08/1000_F_323880864_TPsH5ropjEBo1ViILJmcFHJqsBzorxUB.jpg");
     background-repeat: repeat-y;
     background-position: right;
-    background-size: 1000px;
+    background-size: 2000px;
 }
 
+img {
+    width: 100%;
+}
 .title {
     font-family: 'Dancing Script', cursive;
-    color: aliceblue;
+    color: rgb(206, 12, 61);
 }
 
+.container-juegos{   
+    margin-top: 1rem; 
+    display: grid;   
+    gap: 1rem; 
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+    margin-bottom: 2rem;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    overflow: hidden;
+}.
+
+.imagen-juego {
+    height: 5px;
+    object-fit: cover;
+    object-position: center;
+    image-resolution: ;
+}
 .contenido {
    
 }
+

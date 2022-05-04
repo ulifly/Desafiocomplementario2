@@ -27,6 +27,27 @@ class Juego {
         this.art = art;
     }
 }
+/*---------------relleno el array con push------------------*/
+juegos.push(new Juego("SUPER MARIO ODYSSEY", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/81sS-oqpkLS._AC_SY500_.jpg"));
+juegos.push(new Juego("ANIMAL CROSSING: NEW HORIZONS", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/71EsARfsklS._AC_SY500_.jpg"));
+juegos.push(new Juego("STARLINK", "NINTENDO SWITCH", "https://cdn.awsli.com.br/800x800/1631/1631815/produto/62201707/a7e4173ea6.jpg"));
+juegos.push(new Juego("MONSTER HUNTER RISE", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/814mH7g4wdL._AC_SL1500_.jpg"));
+juegos.push(new Juego("SUPER MARIO PARTY", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/81qGjOM5i9S._AC_SY500_.jpg"));
+juegos.push(new Juego("SUPER MARIO 3D ALLSTARS", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/71TU0o8tAwS._AC_SL1125_.jpg" ))
+juegos.push(new Juego("FINAL FANTASY VII REMAKE", "PLAYSTATION 4", "https://m.media-amazon.com/images/I/61F14y0nXAS._AC_SL1000_.jpg" ))
+juegos.push(new Juego("GOD OF WAR 4", "PLAYSTATION 4", "https://http2.mlstatic.com/D_NQ_NP_770753-MLM47957258519_102021-O.webp" ))
+juegos.push(new Juego("SPIDERMAN", "PLAYSTATION 4", "https://http2.mlstatic.com/D_NQ_NP_643458-MLA43439934747_092020-O.webp" ))
+juegos.push(new Juego("DON'T STARVE TOGETHER ", "STEAM", "https://images.igdb.com/igdb/image/upload/t_cover_big/co1yg3.jpg" ))
+juegos.push(new Juego("HALF-LIFE ALYX", "OCULUS", "https://www.cnet.com/a/img/resize/f5a9d3cbeab6b92f89fab11ac96877b3e6d4e78f/hub/2019/11/21/19db7c73-c881-4bd4-bf96-8c2174feff67/box-art-flat.png?auto=webp&width=1092" ))
+juegos.push(new Juego("FINAL FANTASY VII REMAKE", "PLAYSTATION 4", "https://m.media-amazon.com/images/I/61F14y0nXAS._AC_SL1000_.jpg" ))
+
+
+
+const containerjuegos = document.querySelector(".container-juegos");
+
+document.addEventListener('DOMContentLoaded', () => {
+    menu_juegos();
+})
 
 /*------------aqui las funciones---------------- */ 
 
@@ -48,20 +69,23 @@ function buscar_juego(nombre_a_buscar) {
     }
 }
 
+function menu_juegos(){
+    juegos.forEach(juego => {
+        const divjuego = document.createElement("div");
+        divjuego.classList.add("card");
 
-/*---------------relleno el array con push------------------*/
-juegos.push(new Juego("SUPER MARIO ODYSSEY", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/81sS-oqpkLS._AC_SY500_.jpg"));
-juegos.push(new Juego("ANIMAL CROSSING: NEW HORIZONS", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/71EsARfsklS._AC_SY500_.jpg"));
-juegos.push(new Juego("STARLINK", "NINTENDO SWITCH", "https://cdn.awsli.com.br/800x800/1631/1631815/produto/62201707/a7e4173ea6.jpg"));
-juegos.push(new Juego("MONSTER HUNTER RISE", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/814mH7g4wdL._AC_SL1500_.jpg"));
-juegos.push(new Juego("SUPER MARIO PARTY", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/81qGjOM5i9S._AC_SY500_.jpg"));
-juegos.push(new Juego("SUPER MARIO 3D ALLSTARS", "NINTENDO SWITCH", "https://m.media-amazon.com/images/I/71TU0o8tAwS._AC_SL1125_.jpg" ))
-juegos.push(new Juego("FINAL FANTASY VII REMAKE", "PLAYSTATION 4", "https://m.media-amazon.com/images/I/61F14y0nXAS._AC_SL1000_.jpg" ))
-juegos.push(new Juego("GOD OF WAR 4", "PLAYSTATION 4", "https://http2.mlstatic.com/D_NQ_NP_770753-MLM47957258519_102021-O.webp" ))
-juegos.push(new Juego("SPIDERMAN", "PLAYSTATION 4", "https://http2.mlstatic.com/D_NQ_NP_643458-MLA43439934747_092020-O.webp" ))
-juegos.push(new Juego("DON'T STARVE TOGETHER ", "STEAM", "https://images.igdb.com/igdb/image/upload/t_cover_big/co1yg3.jpg" ))
-juegos.push(new Juego("HALF-LIFE ALYX", "OCULUS", "https://www.cnet.com/a/img/resize/f5a9d3cbeab6b92f89fab11ac96877b3e6d4e78f/hub/2019/11/21/19db7c73-c881-4bd4-bf96-8c2174feff67/box-art-flat.png?auto=webp&width=1092" ))
-juegos.push(new Juego("FINAL FANTASY VII REMAKE", "PLAYSTATION 4", "https://m.media-amazon.com/images/I/61F14y0nXAS._AC_SL1000_.jpg" ))
+        const imgjuego = document.createElement("img");
+        imgjuego.src = juego.art;
+        imgjuego.classList.add("imagen-juego");
+
+        const nombrejuego = document.createElement("h2");
+        nombrejuego.textContent = juego.nombre;
+        divjuego.appendChild(imgjuego);
+        divjuego.appendChild(nombrejuego);
+    
+        containerjuegos.appendChild(divjuego);
+    })
+}
 
 
 
@@ -100,12 +124,12 @@ buttonAdd.addEventListener("click", function(){
 
 buttonSubstract.addEventListener("click", function(){
     let juego_a_eliminar = prompt("ingresa numero del juego a eliminar");
-    if (typeof(juego_a_eliminar) == Number) {
-        
+    juego_a_eliminar = parseInt(juego_a_eliminar);
+    if (typeof(juego_a_eliminar) == "number") {
+        eliminar_juego(juego_a_eliminar);        
     } else {
         alert("introduce un valor numerico entre 0 y " + juegos.length);
     }
-    eliminar_juego(juego_a_eliminar);
 })
 
 
@@ -135,14 +159,14 @@ buttonpercent.addEventListener("click", function(){
 
 /*-----------------------cards que se genera desde el array--------------------------*/
 
-for (let juego of juegos) {
-    contenido.innerHTML +=`<div class="card" style="width: 18rem;">    
-    <img src="${juego.art}" class="card-img-top" alt="...">
-    <div class="card-body">
-    <p class="card-text"> ${juego.nombre} <br> ${juego.plataforma}</p>
-    </div>
-    </div>`
-}
+// for (let juego of juegos) {
+//     contenido.innerHTML +=`<div class="card" style="width: 18rem;">    
+//     <img src="${juego.art}" class="card-img-top" alt="...">
+//     <div class="card-body">
+//     <p class="card-text"> ${juego.nombre} <br> ${juego.plataforma}</p>
+//     </div>
+//     </div>`
+// }
 /*----------------------filtrado de datos por plataforma----------------------------- */
 let juegosps4 = juegos.filter(juego => juego.plataforma == "PLAYSTATION 4");
 let juegosnintendo = juegos.filter(juego => juego.plataforma == "NINTENDO SWITCH");
