@@ -76,7 +76,7 @@ function buscar_juego(nombre_a_buscar) {
         alert("no se encuenta en el catalogo");
     }
 }
-/*------funcion que genera el emnu con las cards------------ */
+/*------funcion que genera el menu con las cards------------ */
 function menu_juegos(){
     juegos.forEach(juego => {
         const divjuego = document.createElement("div");
@@ -94,12 +94,34 @@ function menu_juegos(){
 
         divjuego.appendChild(imgjuego);
         divjuego.appendChild(nombrejuego);
-        divjuego.appendChild(plataformajuego)
+        divjuego.appendChild(plataformajuego);
     
         containerjuegos.appendChild(divjuego);
     })
 }
+//slideshow
 
+const slideshow = document.querySelector("#slideshow");
+
+const carrusel = ["foto1", "foto2", "foto3", "foto4", "foto5", "foto6", "foto7"];
+
+for (let i = 0; i < carrusel.length; i +=1) {
+    let image = new Image();
+    image.src = "img/" + carrusel[i] + ".jpg"
+    slideshow.appendChild(image);
+
+}
+
+slideshow.childNodes[0].setAttribute("class", "current");
+
+let x=0; 
+
+setInterval(function(){
+    slideshow.childNodes[x % carrusel.length].setAttribute("class", "")
+    slideshow.childNodes[(x+1) % carrusel.length].setAttribute("class", "current")
+
+    x += 1;
+}, 4000)
 
 
 /* ----------------------AQUI LO QUE HACEN LOS BOTONES ---------------------------------- */
@@ -168,8 +190,6 @@ buttonpercent.addEventListener("click", function(){
 })
 
 
-
-
 /*-----------------------cards que se genera desde el array--------------------------*/
 
 // for (let juego of juegos) {
@@ -188,14 +208,15 @@ let juegosoculus = juegos.filter(juego => juego.plataforma == "OCULUS");
 
 
 /*-----------------------salida por consola-------------------------------------------*/
-console.table(juegos);
-console.table(juegosps4);
-console.table(juegosnintendo);
-console.table(juegossteam);
-console.table(juegosoculus);
+// console.table(juegos);
+// console.table(juegosps4);
+// console.table(juegosnintendo);
+// console.table(juegossteam);
+// console.table(juegosoculus);
 
-console.log("el porcentaje de juegos de Playstation 4 es: " + Math.round((juegosps4.length / juegos.length)*100) + "%");
-console.log("el porcentaje de juegos de Nintendo Switch es: " + Math.round((juegosnintendo.length / juegos.length)*100) + "%");
-console.log("el porcentaje de juegos de Steam es: " + Math.round((juegossteam.length / juegos.length)*100) + "%");
-console.log("el porcentaje de juegos de oculus es: " + Math.round((juegossteam.length / juegos.length)*100) + "%");
+// console.log("el porcentaje de juegos de Playstation 4 es: " + Math.round((juegosps4.length / juegos.length)*100) + "%");
+// console.log("el porcentaje de juegos de Nintendo Switch es: " + Math.round((juegosnintendo.length / juegos.length)*100) + "%");
+// console.log("el porcentaje de juegos de Steam es: " + Math.round((juegossteam.length / juegos.length)*100) + "%");
+// console.log("el porcentaje de juegos de oculus es: " + Math.round((juegossteam.length / juegos.length)*100) + "%");
+
 

@@ -11,12 +11,10 @@ body {
     background-size: 2000px;
 }
 
-img {
-    width: 100%;
-}
+
 .title {
     font-family: 'Dancing Script', cursive;
-    color: rgb(206, 12, 61);
+    color: rgb(7, 231, 56);
 }
 
 .container-juegos{   
@@ -29,19 +27,38 @@ img {
 .card {
     margin-bottom: 2rem;
     text-align: center;
-    border: 1px solid black;
-    border-radius: 10px;
-    color: black;
-    overflow: hidden;
-}.
+}
+
 
 .imagen-juego {
-    height: 5px;
-    object-fit: cover;
     object-position: center;
-    image-resolution: ;
+    
 }
 .contenido {
    
 }
 
+
+
+#slideshow {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#slideshow img{
+    position: absolute;
+    opacity: 0;
+    width: 500px;
+
+    transition 1s;
+}
+
+#slideshow .current {
+    width: 500;
+    opacity: 1;
+    margin-left: 50px;
+
+    transition: 2s;
+}
