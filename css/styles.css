@@ -34,10 +34,6 @@ body {
     object-position: center;
     
 }
-.contenido {
-   
-}
-
 
 
 #slideshow {
@@ -52,7 +48,7 @@ body {
     opacity: 0;
     width: 500px;
 
-    transition 1s;
+    transition: 1s;
 }
 
 #slideshow .current {
