@@ -57,25 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
     menu_juegos();
 })
 
-/*------------aqui las funciones---------------- */ 
+/*------------aqui las funciones----------------------------------------------------- */ 
 
-function agreagar_juego(nombre_juego, plataforma, url_imagen) {
-    juegos.push(new Juego(nombre_juego, plataforma, url_imagen ));
-}
-
-function eliminar_juego(posicion) {
-    juegos.splice(posicion, 1);
-}
-
-function buscar_juego(nombre_a_buscar) {
-    let busqueda = null;
-    busqueda = juegos.some( juego => juego.nombre == nombre_a_buscar);//esto despues regresara la tarjeta del juego por html
-    if (busqueda == true) {
-        alert("el juego esta en el catalogo");
-    } else {
-        alert("no se encuenta en el catalogo");
-    }
-}
 /*------funcion que genera el menu con las cards------------ */
 function menu_juegos(){
     juegos.forEach(juego => {
@@ -98,6 +81,23 @@ function menu_juegos(){
     
         containerjuegos.appendChild(divjuego);
     })
+}
+function agreagar_juego(nombre_juego, plataforma, url_imagen) {
+    juegos.push(new Juego(nombre_juego, plataforma, url_imagen ));
+}
+
+function eliminar_juego(posicion) {
+    juegos.splice(posicion, 1);
+}
+
+function buscar_juego(nombre_a_buscar) {
+    let busqueda = null;
+    busqueda = juegos.some( juego => juego.nombre == nombre_a_buscar);//esto despues regresara la tarjeta del juego por html
+    if (busqueda == true) {
+        alert("el juego esta en el catalogo");
+    } else {
+        alert("no se encuenta en el catalogo");
+    }
 }
 //slideshow
 
