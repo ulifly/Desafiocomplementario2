@@ -25,7 +25,7 @@
 /**------declaro el array juegos-------- **/
 
 const juegos = [];
-const porcentajes = []; 
+const porcentajes = [];  
 
 /**------esta es la clase del objeto juego--------- **/
 class Juego {
@@ -73,21 +73,33 @@ function menu_juegos(){
         nombrejuego.textContent = juego.nombre;
 
         const plataformajuego = document.createElement("h6");
-        plataformajuego.textContent = juego.plataforma
+        plataformajuego.textContent = juego.plataforma;
 
-        divjuego.appendChild(imgjuego);
+        const btnEliminar = document.createElement("button");
+        btnEliminar.classList.add("btn-eliminar");
+        btnEliminar.textContent = "eliminar";
+        btnEliminar.onclick = () => {
+            eliminar_juego(juegos.indexOf('juego'));
+        }
         divjuego.appendChild(nombrejuego);
+        divjuego.appendChild(imgjuego);
         divjuego.appendChild(plataformajuego);
+        divjuego.appendChild(btnEliminar);
     
         containerjuegos.appendChild(divjuego);
     })
 }
+
+
 function agreagar_juego(nombre_juego, plataforma, url_imagen) {
     juegos.push(new Juego(nombre_juego, plataforma, url_imagen ));
+    menu_juegos();
 }
 
 function eliminar_juego(posicion) {
-    juegos.splice(posicion, 1);
+    alert(posicion);
+    //juegos.splice(posicion, 1);
+    
 }
 
 function buscar_juego(nombre_a_buscar) {
@@ -125,9 +137,7 @@ setInterval(function(){
 
 
 /* ----------------------AQUI LO QUE HACEN LOS BOTONES ---------------------------------- */
-
-//por ahora solo funciona con 1 dato y solo actualiza en el log la idea es que actualize en el html
-//aunque no se si para eso se necesita ya base de datos
+//falta crear un json para guaradr la info
 
 let buttonAdd = document.getElementById("buttonAdd");
 let buttonSubstract = document.getElementById("buttonSubstract");
@@ -190,16 +200,6 @@ buttonpercent.addEventListener("click", function(){
 })
 
 
-/*-----------------------cards que se genera desde el array--------------------------*/
-
-// for (let juego of juegos) {
-//     contenido.innerHTML +=`<div class="card" style="width: 18rem;">    
-//     <img src="${juego.art}" class="card-img-top" alt="...">
-//     <div class="card-body">
-//     <p class="card-text"> ${juego.nombre} <br> ${juego.plataforma}</p>
-//     </div>
-//     </div>`
-// }
 /*----------------------filtrado de datos por plataforma----------------------------- */
 let juegosps4 = juegos.filter(juego => juego.plataforma == "PLAYSTATION 4");
 let juegosnintendo = juegos.filter(juego => juego.plataforma == "NINTENDO SWITCH");
