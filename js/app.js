@@ -4,22 +4,19 @@
 //busacar juegos en especifico
 // espero poder agregar mas features como el porcentaje del juego 
 //(si lo termine no lo he jugado o deje una partida a medias)
-//por ahora funciona con un array pero me parece que en su debido momento se debe 
-//utilizar una base de datos
+
 
 /*------------en progreso----------*/
 
-// los botones en algun momento deben funcionar para agregar eliminar y buscar juegos 
-// y que la salida sea en un html muy visual con las caratulas de los juegos como el html principal
+// el boton de eliminar en cada tarjeta aun no funciona, se tiene que tomar el valor de su posicion en el array 
+// para poder hacer un splice
 
 /*-----------ultimos cambios--------*/
-// para cumplir con las rubicas de evaluacion y aumentar funcionalidad ahora el array se traduce al DOM
-// con una funcion que crea los elementos en HTML y se mejoraron los estilos de las card, 
-
+// para cumplir con las rubicas de evaluacion ahora los eventos de los botones de agegar y eliminar funcionan
 
 /*----------- proximos cambios ---------*/
-//  espero en el siguiente cambio utilizar los eventos para actualizar la pagina con los cambios que 
-//  realizan los botones sobre el array e ingluir el boton de eliminar en cada card
+//  los datos deberan escribirse en un json para no perderse
+// se va a agregar un buscador con autocompletar
 
 
 /**------declaro el array juegos-------- **/
@@ -111,7 +108,7 @@ function buscar_juego(nombre_a_buscar) {
         alert("no se encuenta en el catalogo");
     }
 }
-//slideshow
+//---------------------------------slideshow--------------------------------------------------
 
 const slideshow = document.querySelector("#slideshow");
 
@@ -140,7 +137,6 @@ setInterval(function(){
 //falta crear un json para guaradr la info
 
 let buttonAdd = document.getElementById("buttonAdd");
-let buttonSubstract = document.getElementById("buttonSubstract");
 let buttonSearch = document.getElementById("buttonSearch");
 let buttonpercent = document.getElementById("buttonpercent");
 
@@ -167,15 +163,6 @@ buttonAdd.addEventListener("click", function(){
 })
 
 
-buttonSubstract.addEventListener("click", function(){
-    let juego_a_eliminar = prompt("ingresa numero del juego a eliminar");
-    juego_a_eliminar = parseInt(juego_a_eliminar);
-    if (typeof(juego_a_eliminar) == "number") {
-        eliminar_juego(juego_a_eliminar);        
-    } else {
-        alert("introduce un valor numerico entre 0 y " + juegos.length);
-    }
-})
 
 
 buttonSearch.addEventListener("click", function(){
