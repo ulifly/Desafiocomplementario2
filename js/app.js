@@ -88,6 +88,14 @@ function menu_juegos(){
     })
 }
 
+function clear_document(){
+    tarjeta = querySelector(.card)
+    document.removeChild(document.card);
+}
+
+
+
+
 
 function agreagar_juego(nombre_juego, plataforma, url_imagen) {
     juegos.push(new Juego(nombre_juego, plataforma, url_imagen ));
@@ -96,8 +104,12 @@ function agreagar_juego(nombre_juego, plataforma, url_imagen) {
 
 function eliminar_juego(posicion) {
     alert(posicion);
-    //juegos.splice(posicion, 1);
-    
+    juegos.splice(posicion);
+    clear_document();
+
+    console.log(juegos);
+
+    menu_juegos();
 }
 
 function buscar_juego(nombre_a_buscar) {
