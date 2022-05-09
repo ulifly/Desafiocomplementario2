@@ -76,7 +76,8 @@ function menu_juegos(){
         btnEliminar.classList.add("btn-eliminar");
         btnEliminar.textContent = "eliminar";
         btnEliminar.onclick = () => {
-            eliminar_juego(juegos.indexOf('juego'));
+            id = juegos.indexOf(juego);
+            eliminar_juego(id);
         }
         divjuego.appendChild(nombrejuego);
         divjuego.appendChild(imgjuego);
