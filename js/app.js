@@ -150,7 +150,6 @@ function buscar_juego(nombre_a_buscar) {
 
 /*  funcion autocompletar  trabajando en esto     <=================*/
 function autoComplete(gamein) {
-    //const destino = ['Rio de Janeiro', 'San Pablo', 'Nueva York', 'Miami','Roma','Buenos Aires', 'Madrid', 'Barcelona', 'México DF', 'Bogota','Lima', 'Quito'];
     
         return juegos.filter((valor) => {
             const valorMayuscula = valor.toUpperCase();
