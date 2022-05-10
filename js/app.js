@@ -148,6 +148,18 @@ function buscar_juego(nombre_a_buscar) {
     }
 }
 
+/*  funcion autocompletar  trabajando en esto     <=================*/
+function autoComplete(gamein) {
+    //const destino = ['Rio de Janeiro', 'San Pablo', 'Nueva York', 'Miami','Roma','Buenos Aires', 'Madrid', 'Barcelona', 'México DF', 'Bogota','Lima', 'Quito'];
+    
+        return juegos.filter((valor) => {
+            const valorMayuscula = valor.toUpperCase();
+            const juegoMayuscula = valor.toUpperCase();
+    
+                return valorMayuscula.includes(juegoMayuscula);
+            })
+    }
+
 
 /* ----------------------AQUI LO QUE HACEN LOS BOTONES ---------------------------------- */
 //falta crear un json para guaradr la info
@@ -218,5 +230,3 @@ let juegosoculus = juegos.filter(juego => juego.plataforma == "OCULUS");
 // console.log("el porcentaje de juegos de Nintendo Switch es: " + Math.round((juegosnintendo.length / juegos.length)*100) + "%");
 // console.log("el porcentaje de juegos de Steam es: " + Math.round((juegossteam.length / juegos.length)*100) + "%");
 // console.log("el porcentaje de juegos de oculus es: " + Math.round((juegossteam.length / juegos.length)*100) + "%");
-
-
