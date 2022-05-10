@@ -8,7 +8,6 @@
 
 /*------------en progreso----------*/
 
-// el boton de eliminar en cada tarjeta funciona pero falta hacer clear en el dom para ver el array resultante
 // falta implementar el buscador por ahora hay un boton de buscar pero se cambiara por buscador con autocompletar
 
 /*-----------ultimos cambios--------*/
@@ -126,12 +125,17 @@ function agreagar_juego(nombre_juego, plataforma, url_imagen) {
 }
 
 function eliminar_juego(posicion) {
-    alert("se eliminara el juego en la posicion " + posicion);
-    juegos.splice(posicion, 1);
+    const id = posicion + 1
+    let res = confirm("se eliminara este juego, estas segro? \nposicion: " + id);
+    if (res == true) {
+        juegos.splice(posicion, 1);
+        clear_document();
+        menu_juegos();
+        
+    } else {
+        alert("operacion cncelada");
+    }
     
-    clear_document();
-
-    menu_juegos();
 }
 
 function buscar_juego(nombre_a_buscar) {
