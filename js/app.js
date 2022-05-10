@@ -1,5 +1,5 @@
 /*----readme----*/
-//la idea de esta app es tener una boblioteca de los juegos que poseo para 
+//la idea de esta app es tener una boblioteca de los juegos que tengo para 
 //tener una mejor organizacion y poder filtralos por plataforma asi como
 //busacar juegos en especifico
 // espero poder agregar mas features como el porcentaje del juego 
@@ -8,8 +8,8 @@
 
 /*------------en progreso----------*/
 
-// el boton de eliminar en cada tarjeta aun no funciona, se tiene que tomar el valor de su posicion en el array 
-// para poder hacer un splice
+// el boton de eliminar en cada tarjeta funciona pero falta hacer clear en el dom para ver el array resultante
+// falta implementar el buscador por ahora hay un boton de buscar pero se cambiara por buscador con autocompletar
 
 /*-----------ultimos cambios--------*/
 // para cumplir con las rubicas de evaluacion ahora los eventos de los botones de agegar y eliminar funcionan
@@ -17,6 +17,7 @@
 /*----------- proximos cambios ---------*/
 //  los datos deberan escribirse en un json para no perderse
 // se va a agregar un buscador con autocompletar
+// falta implementar el filtro por plataforma que despliegue las cards 
 
 
 /**------declaro el array juegos-------- **/
@@ -24,7 +25,7 @@
 const juegos = [];
 const porcentajes = [];  
 
-/**------esta es la clase del objeto juego--------- **/
+/**---------------esta es la clase del objeto juego------------- **/
 class Juego {
     constructor(nombre, plataforma, art) {
         this.nombre = nombre;
@@ -54,73 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     menu_juegos();
 })
 
-/*------------aqui las funciones----------------------------------------------------- */ 
-
-/*------funcion que genera el menu con las cards------------ */
-function menu_juegos(){
-    juegos.forEach(juego => {
-        const divjuego = document.createElement("div");
-        divjuego.classList.add("card");
-
-        const imgjuego = document.createElement("img");
-        imgjuego.src = juego.art;
-        imgjuego.classList.add("imagen-juego");
-
-        const nombrejuego = document.createElement("h2");
-        nombrejuego.textContent = juego.nombre;
-
-        const plataformajuego = document.createElement("h6");
-        plataformajuego.textContent = juego.plataforma;
-
-        const btnEliminar = document.createElement("button");
-        btnEliminar.classList.add("btn-eliminar");
-        btnEliminar.textContent = "eliminar";
-        btnEliminar.onclick = () => {
-            id = juegos.indexOf(juego);
-            eliminar_juego(id);
-        }
-        divjuego.appendChild(nombrejuego);
-        divjuego.appendChild(imgjuego);
-        divjuego.appendChild(plataformajuego);
-        divjuego.appendChild(btnEliminar);
-    
-        containerjuegos.appendChild(divjuego);
-    })
-}
-
-function clear_document(){
-    tarjeta = querySelector(.card)
-    document.removeChild(document.card);
-}
-
-
-
-
-
-function agreagar_juego(nombre_juego, plataforma, url_imagen) {
-    juegos.push(new Juego(nombre_juego, plataforma, url_imagen ));
-    menu_juegos();
-}
-
-function eliminar_juego(posicion) {
-    alert(posicion);
-    juegos.splice(posicion);
-    clear_document();
-
-    console.log(juegos);
-
-    menu_juegos();
-}
-
-function buscar_juego(nombre_a_buscar) {
-    let busqueda = null;
-    busqueda = juegos.some( juego => juego.nombre == nombre_a_buscar);//esto despues regresara la tarjeta del juego por html
-    if (busqueda == true) {
-        alert("el juego esta en el catalogo");
-    } else {
-        alert("no se encuenta en el catalogo");
-    }
-}
 //---------------------------------slideshow--------------------------------------------------
 
 const slideshow = document.querySelector("#slideshow");
@@ -144,6 +78,71 @@ setInterval(function(){
 
     x += 1;
 }, 4000)
+/*------------aqui las funciones----------------------------------------------------- */ 
+
+/*------funcion que genera el menu con las cards------------ */
+function menu_juegos(){
+    juegos.forEach(juego => {
+        const divjuego = document.createElement("div");
+        divjuego.classList.add("card");
+
+        const imgjuego = document.createElement("img");
+        imgjuego.src = juego.art;
+        imgjuego.classList.add("imagen-juego");
+
+        const nombrejuego = document.createElement("h2");
+        nombrejuego.textContent = juego.nombre;
+
+        const plataformajuego = document.createElement("h6");
+        plataformajuego.textContent = juego.plataforma;
+
+        const btnEliminar = document.createElement("button");//boton eliminar juego dentro de la card
+        btnEliminar.classList.add("btn-eliminar");
+        btnEliminar.textContent = "eliminar";
+        btnEliminar.onclick = () => {
+            id = juegos.indexOf(juego);
+            eliminar_juego(id);
+        }
+        divjuego.appendChild(nombrejuego);
+        divjuego.appendChild(imgjuego);
+        divjuego.appendChild(plataformajuego);
+        divjuego.appendChild(btnEliminar);
+    
+        containerjuegos.appendChild(divjuego);
+    })
+}
+
+function clear_document(){
+
+    containerjuegos.innerHTML = ""; //aqui hay que remover la clase card para que se limpie el dom 
+    
+
+}
+
+
+function agreagar_juego(nombre_juego, plataforma, url_imagen) {
+    juegos.push(new Juego(nombre_juego, plataforma, url_imagen ));
+    menu_juegos();
+}
+
+function eliminar_juego(posicion) {
+    alert("se eliminara el juego en la posicion " + posicion);
+    juegos.splice(posicion, 1);
+    
+    clear_document();
+
+    menu_juegos();
+}
+
+function buscar_juego(nombre_a_buscar) {
+    let busqueda = null;
+    busqueda = juegos.some( juego => juego.nombre == nombre_a_buscar);//esto despues regresara la tarjeta del juego por html
+    if (busqueda == true) {
+        alert("el juego esta en el catalogo");
+    } else {
+        alert("no se encuenta en el catalogo");
+    }
+}
 
 
 /* ----------------------AQUI LO QUE HACEN LOS BOTONES ---------------------------------- */
@@ -186,10 +185,7 @@ buttonSearch.addEventListener("click", function(){
     } else {
         alert("error. no se introdujeron datos ");
     }
-    
-    
-    
-    
+       
 })
 
 buttonpercent.addEventListener("click", function(){
